@@ -5,7 +5,7 @@
 .intel_syntax noprefix
 .data
 
-FrogsTrail:
+FrogsTrailASCII:
     .ascii "\n"
 	.ascii "\n"
 	.ascii "___________                            ___________             .__.__   \n"
@@ -149,6 +149,18 @@ fmt_starving:     .ascii "YOU ARE STARVING ON DAY \0"
 fmt_starving2:    .ascii "! You lost \0"
 fmt_starving3:    .ascii "% energy.\n\0"
 
+# Format strings for random events
+fmt_event_storm:    .ascii "\n*** STORM EVENT: Lightning struck nearby! You lost \0"
+fmt_event_storm2:   .ascii "% energy from fear. ***\n\0"
+fmt_event_fairy:    .ascii "\n*** FAIRY EVENT: A friendly fairy blessed you with \0"
+fmt_event_fairy2:   .ascii " flies! ***\n\0"
+fmt_event_rainbow:  .ascii "\n*** RAINBOW EVENT: A magical rainbow appears! Your skin condition improved by \0"
+fmt_event_rainbow2: .ascii "%. ***\n\0"
+fmt_event_snake:    .ascii "\n*** SNAKE EVENT: A snake appeared! You dropped \0"
+fmt_event_snake2:   .ascii " flies while escaping. ***\n\0"
+fmt_event_friend:   .ascii "\n*** FRIEND EVENT: You met a friendly toad who shared their energy! You gained \0"
+fmt_event_friend2:  .ascii "% energy. ***\n\0"
+
 # Temporary variables for calculations
 duration:    .quad 0
 energyGain:  .quad 0
@@ -158,6 +170,66 @@ skinGain:    .quad 0
 distanceGain:   .quad 0
 skinLoss:       .quad 0
 energyLoss:     .quad 0
+
+# Add these variables for event chance
+event_chance:       .quad 20    # 20% chance of event occurring
+
+# ASCII art for random events
+LightningASCII:
+    .ascii "\n"
+    .ascii "     _, .--.\n"
+	.ascii "    (  / (  '-.\n"
+	.ascii "    .-=-.    ) -.\n"
+	.ascii "   /   (  .' .   \\\n"
+	.ascii "   \\ ( ' ,_) ) \\_/\n"
+	.ascii "    (_ , /\\  ,_/\n"
+	.ascii "      '--\\ `\\--`\n"
+	.ascii "         _\\ _\\\n"
+	.ascii "         `\\ \\\n"
+	.ascii "          _\\_\\\n"
+	.ascii "          `\\\\\n"
+	.ascii "            \\\\\n"
+	.ascii "        -.'.`\\.'.-\n\0"
+
+FairyASCII:
+    .ascii "\n"
+    .ascii ".'.         .'.\n"
+	.ascii "|  \\       /  |\n"
+	.ascii "'.  \\  |  /  .'\n"
+	.ascii "  '. \\\\|// .'\n"
+	.ascii "    '-- --'\n"
+	.ascii "    .'/|\\'.\n"
+	.ascii "   '..'|'..'\n"
+	.ascii "\n\0"
+
+RainbowASCII:
+    .ascii "\n"
+    .ascii "     _.-\"\"\"\"`-._ \n"
+	.ascii "   ,' _-\"\"\"\"`-_ `.\n"
+	.ascii "  / ,'.-'\"\"\"`-.`. \\\n"
+	.ascii " | / / ,'\"\"\"`. \\ \\ |\n"
+	.ascii "| | | | ,'\"`. | | | |\n"
+	.ascii "| | | | |   | | | | |\n"
+	.ascii "\n\0"
+
+SnakeASCII:
+    .ascii "\n"
+	.ascii "                          .-=-.          .--.\n"
+	.ascii "              __        .'     '.       /  \" )\n"
+	.ascii "      _     .'  '.     /   .-.   \\     /  .-'\\\n"
+	.ascii "     ( \\   / .-.  \\   /   /   \\   \\   /  /    ^\n"
+	.ascii "      \\ `-` /   \\  `-'   /     \\   `-`  /\n"
+	.ascii "       `-.-`     '.____.'       `.____.'\n"
+	.ascii "\n\0"
+
+FriendASCII:
+    .ascii "\n"
+	.ascii "  __   ___.--'_`.\n"
+	.ascii " ( _`.'. -   'o` )\n"
+	.ascii " _\\.'_'      _.-'\n"
+	.ascii "( \\`. )    //\\`\n"
+	.ascii " \\_`-'`---'\\\\__,\n"
+	.ascii "  \\`        `-\\\n\0"
 
 .text
 .global Begin
@@ -175,7 +247,7 @@ Begin:
     mov rsi, 2
     call ChangeTextColor
     # Print FrogsTrail banner
-    lea rsi, FrogsTrail
+    lea rsi, FrogsTrailASCII
     call PrintString
     mov rsi, 7
     call ChangeTextColor
@@ -188,18 +260,19 @@ Begin:
 
 MainGameLoop:
     # Check if game should continue:
+    # if <= 0 game over
     # - distanceLeft > 0
     mov rsi, distanceLeft
     cmp rsi, 0
-    jle GameOver # if <= 0 game over
+    jle GameOver
     # - daysRemaining > 0
     mov rsi, daysRemaining
     cmp rsi, 0
-    jle GameOver # if <= 0 game over
+    jle GameOver
     # - frogEnergy > 0
     mov rsi, frogEnergy
     cmp rsi, 0
-    jle GameOver # if <= 0 game over
+    jle GameOver
 
 PrintStatusMsg:
     # Print current day message
@@ -272,7 +345,7 @@ PrintStatusMsg:
     call ReadInteger
     mov [currentChoice], rsi
 
-    # Compare cases and jmp to appropriate one
+    # Compare cases and jmp to matching case
     mov rsi, [currentChoice]
     cmp rsi, 1
     je Case1_Rest
@@ -306,7 +379,7 @@ Case1_Rest:
     mov rsi, 31
     call GetRandom
     add rsi, 30
-    mov [energyGain], rsi  # Store energy gain
+    mov [energyGain], rsi
 
     # Add to frogEnergy
     mov rsi, [frogEnergy]
@@ -411,13 +484,16 @@ Case4_Hop:
     sub rsi, [distanceGain]
     mov [distanceLeft], rsi
 
-    # Print distance covered
+    mov rsi, 1
+    call ChangeTextColor
     lea rsi, fmt_hop_advance
     call PrintString
     mov rsi, [distanceGain]
     call PrintInteger
     lea rsi, fmt_hop_advance2
     call PrintString
+    mov rsi, 7
+    call ChangeTextColor
 
     # Generate random skin damage (5-15)
     mov rsi, 11
@@ -435,18 +511,21 @@ Case4_Hop:
     cmp rsi, 0
     jle GameOver
 
-    # Print skin damage
+    mov rsi, 2
+    call ChangeTextColor
     lea rsi, fmt_hop_skin
     call PrintString
     mov rsi, [skinLoss]
     call PrintInteger
     lea rsi, fmt_hop_skin2
     call PrintString
+    mov rsi, 7
+    call ChangeTextColor
 
     jmp .energyLoss
 
 .skinTooDry:
-    # Print "YOUR SKIN IS TOO DRY!"
+    # Print dry skin message
     lea rsi, fmt_hop_dry
     call PrintString
 
@@ -467,13 +546,16 @@ Case4_Hop:
     cmp rsi, 0
     jle GameOver
 
-    # Print energy loss
+    mov rsi, 3
+    call ChangeTextColor
     lea rsi, fmt_hop_energy
     call PrintString
     mov rsi, [energyLoss]
     call PrintInteger
     lea rsi, fmt_hop_energy2
     call PrintString
+    mov rsi, 7
+    call ChangeTextColor
 
     jmp ProcessDuration
 
@@ -498,7 +580,7 @@ Case5_Pond:
     add rsi, 20
     mov [energyGain], rsi
 
-    # Add to both frogEnergy and skinCondition
+    # Add both frogEnergy and skinCondition
     mov rsi, [frogEnergy]
     add rsi, [energyGain]
     mov [frogEnergy], rsi
@@ -589,6 +671,9 @@ ProcessDuration:
     jle .starving
 
 .hasFood:
+    mov rsi, 4
+    call ChangeTextColor
+
     # Generate random food eaten (5-10)
     mov rsi, 6
     call GetRandom
@@ -611,9 +696,16 @@ ProcessDuration:
     call PrintInteger
     lea rsi, fmt_food_eaten3
     call PrintString
-    jmp .nextDay
+    mov rsi, 7
+    call ChangeTextColor
+
+    # Check for random event
+    jmp .checkRandomEvent
 
 .starving:
+    mov rsi, 3
+    call ChangeTextColor
+
     # Generate random energy loss (10-20)
     mov rsi, 11
     call GetRandom
@@ -641,6 +733,157 @@ ProcessDuration:
     call PrintInteger
     lea rsi, fmt_starving3
     call PrintString
+    mov rsi, 7
+    call ChangeTextColor
+
+.checkRandomEvent:
+    # Generate random number (0-99)
+    mov rsi, 100
+    call GetRandom
+
+    # Compare with event_chance (20%)
+    cmp rsi, [event_chance]
+    jg .nextDay    # If > 20, no event occurs
+
+    # Generate random event (0-4)
+    mov rsi, 5
+    call GetRandom
+
+    # Compare and jump to appropriate event
+    cmp rsi, 0
+    je .stormEvent
+    cmp rsi, 1
+    je .fairyEvent
+    cmp rsi, 2
+    je .rainbowEvent
+    cmp rsi, 3
+    je .snakeEvent
+    cmp rsi, 4
+    je .friendEvent
+    jmp .nextDay
+
+.stormEvent:
+    # Lose 10-25% energy from fear
+    mov rsi, 16
+    call GetRandom
+    add rsi, 10
+    mov [skinLoss], rsi
+
+    # Subtract from energy
+    mov rsi, [frogEnergy]
+    sub rsi, [skinLoss]
+    mov [frogEnergy], rsi
+
+    # Print message
+    lea rsi, fmt_event_storm
+    call PrintString
+    mov rsi, [skinLoss]
+    call PrintInteger
+    lea rsi, fmt_event_storm2
+    call PrintString
+    lea rsi, LightningASCII
+    call PrintString
+    jmp .nextDay
+
+.fairyEvent:
+    # Gain 30-50 flies
+    mov rsi, 21
+    call GetRandom
+    add rsi, 30
+    mov [skinLoss], rsi
+
+    # Add to food supply
+    mov rsi, [foodSupply]
+    add rsi, [skinLoss]
+    mov [foodSupply], rsi
+
+    # Print message
+    lea rsi, fmt_event_fairy
+    call PrintString
+    mov rsi, [skinLoss]
+    call PrintInteger
+    lea rsi, fmt_event_fairy2
+    call PrintString
+    lea rsi, FairyASCII
+    call PrintString
+    jmp .nextDay
+
+.rainbowEvent:
+    # Improve skin condition by 20-40%
+    mov rsi, 21
+    call GetRandom
+    add rsi, 20
+    mov [skinLoss], rsi
+
+    # Add to skin condition
+    mov rsi, [skinCondition]
+    add rsi, [skinLoss]
+    cmp rsi, 100    # Cap at 100%
+    jle .storeSkinRainbow
+    mov rsi, 100
+.storeSkinRainbow:
+    mov [skinCondition], rsi
+
+    # Print message
+    lea rsi, fmt_event_rainbow
+    call PrintString
+    mov rsi, [skinLoss]
+    call PrintInteger
+    lea rsi, fmt_event_rainbow2
+    call PrintString
+    lea rsi, RainbowASCII
+    call PrintString
+    jmp .nextDay
+
+.snakeEvent:
+    # Lose 15-35 flies
+    mov rsi, 21
+    call GetRandom
+    add rsi, 15
+    mov [skinLoss], rsi
+
+    # Subtract from food supply
+    mov rsi, [foodSupply]
+    sub rsi, [skinLoss]
+    mov [foodSupply], rsi
+
+    # Print message
+    lea rsi, fmt_event_snake
+    call PrintString
+    mov rsi, [skinLoss]
+    call PrintInteger
+    lea rsi, fmt_event_snake2
+    call PrintString
+    lea rsi, SnakeASCII
+    call PrintString
+    jmp .nextDay
+
+.friendEvent:
+    # Gain 15-35% energy
+    mov rsi, 21
+    call GetRandom
+    add rsi, 15
+    mov [skinLoss], rsi
+
+    # Add to energy
+    mov rsi, [frogEnergy]
+    add rsi, [skinLoss]
+    cmp rsi, 100    # Cap at 100%
+    jle .storeEnergyFriend
+    mov rsi, 100
+.storeEnergyFriend:
+    mov [frogEnergy], rsi
+
+    # Print message
+    lea rsi, fmt_event_friend
+    call PrintString
+    mov rsi, [skinLoss]
+    call PrintInteger
+    lea rsi, fmt_event_friend2
+    call PrintString
+    lea rsi, FriendASCII
+    call PrintString
+    jmp .nextDay
 
 .nextDay:
     # Add 1 to currentDay
@@ -663,7 +906,7 @@ ProcessDuration:
     jmp MainGameLoop
 
 GameOver:
-    # Check if distance <= 0 (victory condition)
+    # distance <= 0 (victory condition)
     mov rsi, [distanceLeft]
     cmp rsi, 0
     jle .victory
