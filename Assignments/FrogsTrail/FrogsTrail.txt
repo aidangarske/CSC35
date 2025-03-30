@@ -1,0 +1,713 @@
+aidangarske@wolf-prec5560:~/CSC35/Assignments$ ./a.out
+
+
+___________                            ___________             .__.__
+\_   _____/______  ____   ____  ______ \__    ___/___________  |__|  |
+ |    __) \_  __ \/  _ \ / ___\/  ___/   |    |  \_  __ \__  \ |  |  |
+ |     \   |  | \(  <_> ) /_/  >___ \    |    |   |  | \// __ \|  |  |__
+ \___  /   |__|   \____/\___  /____  >   |____|   |__|  (____  /__|____/
+     \/                /_____/     \/                        \/
+
+
+Welcome to Frog's Trail!
+You are a brave frog trying to reach the Great Pond 1000 lily pads away.
+The evil forces of nature are approiaching quickly.
+You have 60 days to make it there before the storm comes...
+
+Your resources:
+   * Your skin conditon drops 5-15% each day you travel.
+     If it reaches zero, you pass out and cannot continue.
+   * You will eat 5-10 flies each day.
+   * If you are starving, your health drops 10-20% each day.
+
+JOURNEY DAY 1
+
+Distance left      : 1000 lily pads
+Skin condition     : 100%
+Your energy        : 100%
+Food supply        : 100 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 62 lily pads.
+Your skin dried out by 9%.
+You lost 10% energy.
+On day 1, you ate 7 flies.
+
+JOURNEY DAY 2
+
+Distance left      : 938 lily pads
+Skin condition     : 91%
+Your energy        : 90%
+Food supply        : 93 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 56 lily pads.
+Your skin dried out by 12%.
+You lost 6% energy.
+On day 2, you ate 7 flies.
+
+JOURNEY DAY 3
+
+Distance left      : 882 lily pads
+Skin condition     : 79%
+Your energy        : 84%
+Food supply        : 86 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 57 lily pads.
+Your skin dried out by 6%.
+You lost 7% energy.
+On day 3, you ate 9 flies.
+
+JOURNEY DAY 4
+
+Distance left      : 825 lily pads
+Skin condition     : 73%
+Your energy        : 77%
+Food supply        : 77 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 14 lily pads.
+Your skin dried out by 13%.
+You lost 7% energy.
+On day 4, you ate 8 flies.
+
+JOURNEY DAY 5
+
+Distance left      : 811 lily pads
+Skin condition     : 60%
+Your energy        : 70%
+Food supply        : 69 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 66 lily pads.
+Your skin dried out by 14%.
+You lost 8% energy.
+On day 5, you ate 7 flies.
+
+JOURNEY DAY 6
+
+Distance left      : 745 lily pads
+Skin condition     : 46%
+Your energy        : 62%
+Food supply        : 62 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 6 lily pads.
+Your skin dried out by 15%.
+You lost 8% energy.
+On day 6, you ate 5 flies.
+
+JOURNEY DAY 7
+
+Distance left      : 739 lily pads
+Skin condition     : 31%
+Your energy        : 54%
+Food supply        : 57 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 55 lily pads.
+Your skin dried out by 9%.
+You lost 8% energy.
+On day 7, you ate 6 flies.
+
+JOURNEY DAY 8
+
+Distance left      : 684 lily pads
+Skin condition     : 22%
+Your energy        : 46%
+Food supply        : 51 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 2
+
+** You moisturized for 1 days. **
+Your skin condition improved by 26%.
+On day 8, you ate 5 flies.
+
+JOURNEY DAY 9
+
+Distance left      : 684 lily pads
+Skin condition     : 48%
+Your energy        : 46%
+Food supply        : 46 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 37 lily pads.
+Your skin dried out by 15%.
+You lost 6% energy.
+On day 9, you ate 8 flies.
+
+JOURNEY DAY 10
+
+Distance left      : 647 lily pads
+Skin condition     : 33%
+Your energy        : 40%
+Food supply        : 38 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 33 lily pads.
+Your skin dried out by 7%.
+You lost 8% energy.
+On day 10, you ate 10 flies.
+
+JOURNEY DAY 11
+
+Distance left      : 614 lily pads
+Skin condition     : 26%
+Your energy        : 32%
+Food supply        : 28 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 51 lily pads.
+Your skin dried out by 6%.
+You lost 7% energy.
+On day 11, you ate 7 flies.
+
+JOURNEY DAY 12
+
+Distance left      : 563 lily pads
+Skin condition     : 20%
+Your energy        : 25%
+Food supply        : 21 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 71 lily pads.
+Your skin dried out by 15%.
+You lost 10% energy.
+On day 12, you ate 5 flies.
+
+JOURNEY DAY 13
+
+Distance left      : 492 lily pads
+Skin condition     : 5%
+Your energy        : 15%
+Food supply        : 16 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 2
+
+** You moisturized for 1 days. **
+Your skin condition improved by 48%.
+On day 13, you ate 9 flies.
+
+JOURNEY DAY 14
+
+Distance left      : 492 lily pads
+Skin condition     : 53%
+Your energy        : 15%
+Food supply        : 7 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 3
+
+Ribbit! You caught 121 flies!
+On day 14, you ate 7 flies.
+
+JOURNEY DAY 15
+
+Distance left      : 492 lily pads
+Skin condition     : 53%
+Your energy        : 15%
+Food supply        : 114 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 79 lily pads.
+Your skin dried out by 7%.
+You lost 6% energy.
+On day 15, you ate 10 flies.
+
+JOURNEY DAY 16
+
+Distance left      : 413 lily pads
+Skin condition     : 46%
+Your energy        : 9%
+Food supply        : 104 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 1
+
+** You rested for 2 days. **
+You gained 47% energy.
+On day 16, you ate 7 flies.
+On day 17, you ate 10 flies.
+
+JOURNEY DAY 18
+
+Distance left      : 413 lily pads
+Skin condition     : 46%
+Your energy        : 56%
+Food supply        : 87 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 43 lily pads.
+Your skin dried out by 7%.
+You lost 8% energy.
+On day 18, you ate 9 flies.
+
+JOURNEY DAY 19
+
+Distance left      : 370 lily pads
+Skin condition     : 39%
+Your energy        : 48%
+Food supply        : 78 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 71 lily pads.
+Your skin dried out by 14%.
+You lost 7% energy.
+On day 19, you ate 9 flies.
+
+JOURNEY DAY 20
+
+Distance left      : 299 lily pads
+Skin condition     : 25%
+Your energy        : 41%
+Food supply        : 69 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 47 lily pads.
+Your skin dried out by 10%.
+You lost 9% energy.
+On day 20, you ate 5 flies.
+
+JOURNEY DAY 21
+
+Distance left      : 252 lily pads
+Skin condition     : 15%
+Your energy        : 32%
+Food supply        : 64 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 38 lily pads.
+Your skin dried out by 10%.
+You lost 9% energy.
+On day 21, you ate 10 flies.
+
+JOURNEY DAY 22
+
+Distance left      : 214 lily pads
+Skin condition     : 5%
+Your energy        : 23%
+Food supply        : 54 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 2
+
+** You moisturized for 2 days. **
+Your skin condition improved by 28%.
+On day 22, you ate 9 flies.
+On day 23, you ate 7 flies.
+
+JOURNEY DAY 24
+
+Distance left      : 214 lily pads
+Skin condition     : 33%
+Your energy        : 23%
+Food supply        : 38 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 1
+
+** You rested for 3 days. **
+You gained 32% energy.
+On day 24, you ate 9 flies.
+On day 25, you ate 10 flies.
+On day 26, you ate 10 flies.
+
+JOURNEY DAY 27
+
+Distance left      : 214 lily pads
+Skin condition     : 33%
+Your energy        : 55%
+Food supply        : 9 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 3
+
+Ribbit! You caught 173 flies!
+On day 27, you ate 6 flies.
+
+JOURNEY DAY 28
+
+Distance left      : 214 lily pads
+Skin condition     : 33%
+Your energy        : 55%
+Food supply        : 167 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 67 lily pads.
+Your skin dried out by 9%.
+You lost 9% energy.
+On day 28, you ate 8 flies.
+
+JOURNEY DAY 29
+
+Distance left      : 147 lily pads
+Skin condition     : 24%
+Your energy        : 46%
+Food supply        : 159 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 8 lily pads.
+Your skin dried out by 8%.
+You lost 5% energy.
+On day 29, you ate 5 flies.
+
+JOURNEY DAY 30
+
+Distance left      : 139 lily pads
+Skin condition     : 16%
+Your energy        : 41%
+Food supply        : 154 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 49 lily pads.
+Your skin dried out by 11%.
+You lost 5% energy.
+On day 30, you ate 5 flies.
+
+JOURNEY DAY 31
+
+Distance left      : 90 lily pads
+Skin condition     : 5%
+Your energy        : 36%
+Food supply        : 149 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 5
+** You found a pond and stayed for 4 days. **
+Your energy and skin improved by 25%.
+On day 31, you ate 8 flies.
+On day 32, you ate 10 flies.
+On day 33, you ate 5 flies.
+On day 34, you ate 9 flies.
+
+JOURNEY DAY 35
+
+Distance left      : 90 lily pads
+Skin condition     : 30%
+Your energy        : 61%
+Food supply        : 117 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 5 lily pads.
+Your skin dried out by 5%.
+You lost 10% energy.
+On day 35, you ate 9 flies.
+
+JOURNEY DAY 36
+
+Distance left      : 85 lily pads
+Skin condition     : 25%
+Your energy        : 51%
+Food supply        : 108 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 15 lily pads.
+Your skin dried out by 12%.
+You lost 9% energy.
+On day 36, you ate 5 flies.
+
+JOURNEY DAY 37
+
+Distance left      : 70 lily pads
+Skin condition     : 13%
+Your energy        : 42%
+Food supply        : 103 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 51 lily pads.
+Your skin dried out by 7%.
+You lost 8% energy.
+On day 37, you ate 7 flies.
+
+JOURNEY DAY 38
+
+Distance left      : 19 lily pads
+Skin condition     : 6%
+Your energy        : 34%
+Food supply        : 96 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 2
+
+** You moisturized for 1 days. **
+Your skin condition improved by 48%.
+On day 38, you ate 7 flies.
+
+JOURNEY DAY 39
+
+Distance left      : 19 lily pads
+Skin condition     : 54%
+Your energy        : 34%
+Food supply        : 89 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 13 lily pads.
+Your skin dried out by 15%.
+You lost 5% energy.
+On day 39, you ate 10 flies.
+
+JOURNEY DAY 40
+
+Distance left      : 6 lily pads
+Skin condition     : 39%
+Your energy        : 29%
+Food supply        : 79 flies
+
+What would you like to do?
+(1) Rest in the sun (1-5 days, restores 30-60% energy)
+(2) Moisturize your skin (1-3 days, improves skin 10-50%)
+(3) Hunt for flies (1 day, catch 20-200 flies)
+(4) Hop forward (5-80 lily pads, uses energy and dries skin)
+(5) Find a temporary pond (2-4 days, restores 20-40% energy and skin)
+(6) Trade with other frogs (1 day, gamble flies for better supplies)
+Enter your choice (1-6): 4
+
+You hopped forward 34 lily pads.
+Your skin dried out by 14%.
+You lost 5% energy.
+On day 40, you ate 9 flies.
+
+=====Congratulations!=====
+You've made it to the Great Pond!
+You're a true frog hero!
