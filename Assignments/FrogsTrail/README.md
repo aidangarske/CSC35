@@ -1,4 +1,10 @@
-# Frog's Trail
+___________                            ___________             .__.__   
+\_   _____/______  ____   ____  ______ \__    ___/___________  |__|  |  
+ |    __) \_  __ \/  _ \ / ___\/  ___/   |    |  \_  __ \__  \ |  |  |  
+ |     \   |  | \(  <_> ) /_/  >___ \    |    |   |  | \// __ \|  |  |__
+ \___  /   |__|   \____/\___  /____  >   |____|   |__|  (____  /__|____/
+     \/                /_____/     \/                        \/         
+
 
 A text-based adventure game where you help a brave frog journey across dangerous lily pads to reach the Great Pond.
 
