@@ -59,39 +59,68 @@ skinCondition:    .quad 100
 currentChoice:    .quad 0
 currentDay:       .quad 1
 
+# VT100 Color Constants
+COLOR_RED:      .quad 1
+COLOR_GREEN:    .quad 2
+COLOR_YELLOW:   .quad 3
+COLOR_BLUE:     .quad 4
+COLOR_WHITE:    .quad 7
+
+# Temporary variables for calculations
+duration:    .quad 0
+energyGain:  .quad 0
+skinGain:    .quad 0
+
+# Additional temporary variables
+distanceGain:   .quad 0
+skinLoss:       .quad 0
+energyLoss:     .quad 0
+
 # Constants for random ranges
 MIN_WAGON_DROP:   .quad 5
-MAX_WAGON_DROP:   .quad 15
+WAGON_DROP_RANGE: .quad 11    # 15-5+1 = 11
 MIN_FOOD_EATEN:   .quad 5
-MAX_FOOD_EATEN:   .quad 10
+FOOD_EATEN_RANGE: .quad 6     # 10-5+1 = 6
 MIN_HEALTH_DROP:  .quad 5
-MAX_HEALTH_DROP:  .quad 10
+HEALTH_DROP_RANGE:.quad 6     # 10-5+1 = 6
 MIN_REST_HEALTH:  .quad 30
-MAX_REST_HEALTH:  .quad 60
+REST_HEALTH_RANGE:.quad 31    # 60-30+1 = 31
 MIN_REST_DAYS:    .quad 1
-MAX_REST_DAYS:    .quad 5
+REST_DAYS_RANGE:  .quad 5     # 5-1+1 = 5
 MIN_REPAIR:       .quad 10
-MAX_REPAIR:       .quad 50
+REPAIR_RANGE:     .quad 41    # 50-10+1 = 41
 MIN_REPAIR_DAYS:  .quad 1
-MAX_REPAIR_DAYS:  .quad 3
+REPAIR_DAYS_RANGE:.quad 3     # 3-1+1 = 3
 MIN_HUNT_FOOD:    .quad 20
-MAX_HUNT_FOOD:    .quad 200
+HUNT_FOOD_RANGE:  .quad 181   # 200-20+1 = 181
 MIN_TRAVEL:       .quad 5
-MAX_TRAVEL:       .quad 80
+TRAVEL_RANGE:     .quad 76    # 80-5+1 = 76
 
 # New constants for additional choices
 MIN_POND_DAYS:    .quad 2
-MAX_POND_DAYS:    .quad 4
+POND_DAYS_RANGE:  .quad 3     # 4-2+1 = 3
 MIN_POND_BENEFIT: .quad 20
-MAX_POND_BENEFIT: .quad 40
+POND_BENEFIT_RANGE:.quad 21   # 40-20+1 = 21
 MIN_TRADE_LOSS:   .quad 10
-MAX_TRADE_LOSS:   .quad 30
+TRADE_LOSS_RANGE: .quad 21    # 30-10+1 = 21
 MIN_TRADE_GAIN:   .quad 15
-MAX_TRADE_GAIN:   .quad 50
+TRADE_GAIN_RANGE: .quad 36    # 50-15+1 = 36
+
+# Constants for random events
+MIN_STORM_ENERGY: .quad 10
+STORM_ENERGY_RANGE:.quad 16   # 25-10+1 = 16
+MIN_FAIRY_FLIES:  .quad 30
+FAIRY_FLIES_RANGE:.quad 21    # 50-30+1 = 21
+MIN_RAINBOW_SKIN: .quad 20
+RAINBOW_SKIN_RANGE:.quad 21   # 40-20+1 = 21
+MIN_SNAKE_FLIES:  .quad 15
+SNAKE_FLIES_RANGE:.quad 21    # 35-15+1 = 21
+MIN_FRIEND_ENERGY:.quad 15
+FRIEND_ENERGY_RANGE:.quad 21  # 35-15+1 = 21
+EVENT_CHANCE:     .quad 20    # 20% chance of event occurring
+EVENT_TYPES:      .quad 5     # Number of different event types
 
 # Format strings for output
-fmt_int:          .ascii "%d\0"
-fmt_str:          .ascii "%s\0"
 fmt_newline:      .ascii "\n\0"
 
 # Format strings for StatusMsg
@@ -160,19 +189,6 @@ fmt_event_snake:    .ascii "\n*** SNAKE EVENT: A snake appeared! You dropped \0"
 fmt_event_snake2:   .ascii " flies while escaping. ***\n\0"
 fmt_event_friend:   .ascii "\n*** FRIEND EVENT: You met a friendly toad who shared their energy! You gained \0"
 fmt_event_friend2:  .ascii "% energy. ***\n\0"
-
-# Temporary variables for calculations
-duration:    .quad 0
-energyGain:  .quad 0
-skinGain:    .quad 0
-
-# Additional temporary variables
-distanceGain:   .quad 0
-skinLoss:       .quad 0
-energyLoss:     .quad 0
-
-# Add these variables for event chance
-event_chance:       .quad 20    # 20% chance of event occurring
 
 # ASCII art for random events
 LightningASCII:
@@ -243,13 +259,12 @@ Begin:
     mov qword ptr [daysRemaining], 60
     mov qword ptr [currentDay], 1
 
-
-    mov rsi, 2
+    mov rsi, [COLOR_GREEN]
     call ChangeTextColor
     # Print FrogsTrail banner
     lea rsi, FrogsTrailASCII
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
     # Print welcome message
     lea rsi, WelcomeMsg
@@ -288,19 +303,19 @@ PrintStatusMsg:
     # Print distance left in red
     lea rsi, fmt_distance
     call PrintString
-    mov rsi, 1
+    mov rsi, [COLOR_RED]
     call ChangeTextColor
     mov rsi, [distanceLeft]
     call PrintInteger
     lea rsi, fmt_lilypads
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Print skin condition
     lea rsi, fmt_skin
     call PrintString
-    mov rsi, 2
+    mov rsi, [COLOR_GREEN]
     call ChangeTextColor
     mov rsi, [skinCondition]
     call PrintInteger
@@ -308,13 +323,13 @@ PrintStatusMsg:
     call PrintString
     lea rsi, fmt_newline
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Print energy
     lea rsi, fmt_energy
     call PrintString
-    mov rsi, 3
+    mov rsi, [COLOR_YELLOW]
     call ChangeTextColor
     mov rsi, [frogEnergy]
     call PrintInteger
@@ -322,19 +337,19 @@ PrintStatusMsg:
     call PrintString
     lea rsi, fmt_newline
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Print food supply
     lea rsi, fmt_food
     call PrintString
-    mov rsi, 4
+    mov rsi, [COLOR_BLUE]
     call ChangeTextColor
     mov rsi, [foodSupply]
     call PrintInteger
     lea rsi, fmt_flies
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Print choice menu
@@ -362,9 +377,9 @@ PrintStatusMsg:
 
 Case1_Rest:
     # Generate random days (1-5)
-    mov rsi, 5
+    mov rsi, [REST_DAYS_RANGE]
     call GetRandom
-    add rsi, 1
+    add rsi, [MIN_REST_DAYS]
     mov [duration], rsi
 
     # Print rest duration
@@ -376,9 +391,9 @@ Case1_Rest:
     call PrintString
 
     # Generate random energy gain (30-60)
-    mov rsi, 31
+    mov rsi, [REST_HEALTH_RANGE]
     call GetRandom
-    add rsi, 30
+    add rsi, [MIN_REST_HEALTH]
     mov [energyGain], rsi
 
     # Add to frogEnergy
@@ -403,9 +418,9 @@ Case1_Rest:
 
 Case2_Moisturize:
     # Generate random days (1-3)
-    mov rsi, 3
+    mov rsi, [REPAIR_DAYS_RANGE]
     call GetRandom
-    add rsi, 1
+    add rsi, [MIN_REPAIR_DAYS]
     mov [duration], rsi
 
     # Print moisturize duration
@@ -417,9 +432,9 @@ Case2_Moisturize:
     call PrintString
 
     # Generate random skin improvement (10-50)
-    mov rsi, 41
+    mov rsi, [REPAIR_RANGE]
     call GetRandom
-    add rsi, 10
+    add rsi, [MIN_REPAIR]
     mov [skinGain], rsi
 
     # Add to skinCondition
@@ -448,9 +463,9 @@ Case3_Hunt:
     mov [duration], rsi
 
     # Generate random flies (20-200)
-    mov rsi, 181
+    mov rsi, [HUNT_FOOD_RANGE]
     call GetRandom
-    add rsi, 20
+    add rsi, [MIN_HUNT_FOOD]
     mov [foodSupply], rsi
 
     # Print flies caught
@@ -474,9 +489,9 @@ Case4_Hop:
     jle .skinTooDry
 
     # Generate random distance (5-80)
-    mov rsi, 76
+    mov rsi, [TRAVEL_RANGE]
     call GetRandom
-    add rsi, 5
+    add rsi, [MIN_TRAVEL]
     mov [distanceGain], rsi
 
     # Subtract from distanceLeft
@@ -484,7 +499,7 @@ Case4_Hop:
     sub rsi, [distanceGain]
     mov [distanceLeft], rsi
 
-    mov rsi, 1
+    mov rsi, [COLOR_RED]
     call ChangeTextColor
     lea rsi, fmt_hop_advance
     call PrintString
@@ -492,13 +507,13 @@ Case4_Hop:
     call PrintInteger
     lea rsi, fmt_hop_advance2
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Generate random skin damage (5-15)
-    mov rsi, 11
+    mov rsi, [WAGON_DROP_RANGE]
     call GetRandom
-    add rsi, 5
+    add rsi, [MIN_WAGON_DROP]
     mov [skinLoss], rsi
 
     # Subtract from skinCondition
@@ -511,7 +526,7 @@ Case4_Hop:
     cmp rsi, 0
     jle GameOver
 
-    mov rsi, 2
+    mov rsi, [COLOR_RED]
     call ChangeTextColor
     lea rsi, fmt_hop_skin
     call PrintString
@@ -519,7 +534,7 @@ Case4_Hop:
     call PrintInteger
     lea rsi, fmt_hop_skin2
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     jmp .energyLoss
@@ -531,9 +546,9 @@ Case4_Hop:
 
 .energyLoss:
     # Generate random energy loss (5-10)
-    mov rsi, 6
+    mov rsi, [HEALTH_DROP_RANGE]
     call GetRandom
-    add rsi, 5
+    add rsi, [MIN_HEALTH_DROP]
     mov [energyLoss], rsi
 
     # Subtract from frogEnergy
@@ -546,7 +561,7 @@ Case4_Hop:
     cmp rsi, 0
     jle GameOver
 
-    mov rsi, 3
+    mov rsi, [COLOR_RED]
     call ChangeTextColor
     lea rsi, fmt_hop_energy
     call PrintString
@@ -554,16 +569,16 @@ Case4_Hop:
     call PrintInteger
     lea rsi, fmt_hop_energy2
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     jmp ProcessDuration
 
 Case5_Pond:
     # Generate random days (2-4)
-    mov rsi, 3
+    mov rsi, [POND_DAYS_RANGE]
     call GetRandom
-    add rsi, 2
+    add rsi, [MIN_POND_DAYS]
     mov [duration], rsi
 
     # Print pond duration
@@ -575,9 +590,9 @@ Case5_Pond:
     call PrintString
 
     # Generate random benefit (20-40)
-    mov rsi, 21
+    mov rsi, [POND_BENEFIT_RANGE]
     call GetRandom
-    add rsi, 20
+    add rsi, [MIN_POND_BENEFIT]
     mov [energyGain], rsi
 
     # Add both frogEnergy and skinCondition
@@ -614,9 +629,9 @@ Case6_Trade:
 
 .tradeGain:
     # Generate random gain (15-50 flies)
-    mov rsi, 36
+    mov rsi, [TRADE_GAIN_RANGE]
     call GetRandom
-    add rsi, 15
+    add rsi, [MIN_TRADE_GAIN]
     mov [energyGain], rsi
 
     # Add to foodSupply
@@ -635,9 +650,9 @@ Case6_Trade:
 
 .tradeLoss:
     # Generate random loss (10-30 flies)
-    mov rsi, 21
+    mov rsi, [TRADE_LOSS_RANGE]
     call GetRandom
-    add rsi, 10
+    add rsi, [MIN_TRADE_LOSS]
     mov [energyLoss], rsi
 
     # Subtract from foodSupply
@@ -671,13 +686,13 @@ ProcessDuration:
     jle .starving
 
 .hasFood:
-    mov rsi, 4
+    mov rsi, [COLOR_BLUE]
     call ChangeTextColor
 
     # Generate random food eaten (5-10)
-    mov rsi, 6
+    mov rsi, [FOOD_EATEN_RANGE]
     call GetRandom
-    add rsi, 5
+    add rsi, [MIN_FOOD_EATEN]
     mov [skinLoss], rsi
 
     # Subtract from foodSupply
@@ -696,20 +711,20 @@ ProcessDuration:
     call PrintInteger
     lea rsi, fmt_food_eaten3
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
     # Check for random event
     jmp .checkRandomEvent
 
 .starving:
-    mov rsi, 3
+    mov rsi, [COLOR_YELLOW]
     call ChangeTextColor
 
     # Generate random energy loss (10-20)
-    mov rsi, 11
+    mov rsi, [HEALTH_DROP_RANGE]
     call GetRandom
-    add rsi, 10
+    add rsi, [MIN_HEALTH_DROP]
     mov [skinLoss], rsi
 
     # Subtract from frogEnergy
@@ -733,7 +748,7 @@ ProcessDuration:
     call PrintInteger
     lea rsi, fmt_starving3
     call PrintString
-    mov rsi, 7
+    mov rsi, [COLOR_WHITE]
     call ChangeTextColor
 
 .checkRandomEvent:
@@ -742,11 +757,11 @@ ProcessDuration:
     call GetRandom
 
     # Compare with event_chance (20%)
-    cmp rsi, [event_chance]
+    cmp rsi, [EVENT_CHANCE]
     jg .nextDay    # If > 20, no event occurs
 
     # Generate random event (0-4)
-    mov rsi, 5
+    mov rsi, [EVENT_TYPES]
     call GetRandom
 
     # Compare and jump to appropriate event
@@ -764,9 +779,9 @@ ProcessDuration:
 
 .stormEvent:
     # Lose 10-25% energy from fear
-    mov rsi, 16
+    mov rsi, [STORM_ENERGY_RANGE]
     call GetRandom
-    add rsi, 10
+    add rsi, [MIN_STORM_ENERGY]
     mov [skinLoss], rsi
 
     # Subtract from energy
@@ -787,9 +802,9 @@ ProcessDuration:
 
 .fairyEvent:
     # Gain 30-50 flies
-    mov rsi, 21
+    mov rsi, [FAIRY_FLIES_RANGE]
     call GetRandom
-    add rsi, 30
+    add rsi, [MIN_FAIRY_FLIES]
     mov [skinLoss], rsi
 
     # Add to food supply
@@ -810,9 +825,9 @@ ProcessDuration:
 
 .rainbowEvent:
     # Improve skin condition by 20-40%
-    mov rsi, 21
+    mov rsi, [RAINBOW_SKIN_RANGE]
     call GetRandom
-    add rsi, 20
+    add rsi, [MIN_RAINBOW_SKIN]
     mov [skinLoss], rsi
 
     # Add to skin condition
@@ -837,9 +852,9 @@ ProcessDuration:
 
 .snakeEvent:
     # Lose 15-35 flies
-    mov rsi, 21
+    mov rsi, [SNAKE_FLIES_RANGE]
     call GetRandom
-    add rsi, 15
+    add rsi, [MIN_SNAKE_FLIES]
     mov [skinLoss], rsi
 
     # Subtract from food supply
@@ -860,9 +875,9 @@ ProcessDuration:
 
 .friendEvent:
     # Gain 15-35% energy
-    mov rsi, 21
+    mov rsi, [FRIEND_ENERGY_RANGE]
     call GetRandom
-    add rsi, 15
+    add rsi, [MIN_FRIEND_ENERGY]
     mov [skinLoss], rsi
 
     # Add to energy
